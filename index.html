@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/css/modaal.min.css"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat&family=Noto+Sans+JP&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon" />
+    <title>Suzuka Uchida's Portfolio</title>
+  </head>
+  <body>
+    <div class="container">
+      <!-- header -->
+      <header class="header">
+        <div class="header__inner">
+          <h1 class="header__logo">
+            <img class="header__logo-img" src="./images/logo.png" alt="" />
+          </h1>
+          <div class="header__openbtn"><span></span><span></span></div>
+          <nav class="header__navi">
+            <ul class="header__navi-list--pc js-pageLink">
+              <li class="header__navi-item--pc"><a href="#works">works</a></li>
+              <li class="header__navi-item--pc">
+                <a href="#skills">skills</a>
+              </li>
+              <li class="header__navi-item--pc"><a href="#about">about</a></li>
+              <li class="header__navi-item--pc">
+                <a href="#contact">contact</a>
+              </li>
+            </ul>
+            <ul class="header__navi-list--sp js-pageLink">
+              <li class="header__navi-item--sp"><a href="#works">works</a></li>
+              <li class="header__navi-item--sp">
+                <a href="#skills">skills</a>
+              </li>
+              <li class="header__navi-item--sp"><a href="#about">about</a></li>
+              <li class="header__navi-item--sp">
+                <a href="#contact">contact</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+      <!-- header end -->
+
+      <main>
+        <div class="main__inner">
+          <!-- first-view -->
+          <header class="first-view">
+            <div class="inner">
+              <h2 class="first-view__message">Welcome to my Portfolio!</h2>
+              <div class="scrolldown"><span>scroll</span></div>
+            </div>
+          </header>
+          <!-- first-view end -->
+          <!-- works -->
+          <section class="works" id="works">
+            <div class="inner">
+              <h2 class="section-title">works</h2>
+              <div class="section-container">
+                <ul class="works__list">
+                  <li class="works__list-item">
+                    <a href="#works__modal01" class="js-modal-open">
+                      <div class="works__img">
+                        <img src="./images/works_img01.png" alt="" />
+                      </div>
+                      <div class="works__box">
+                        <h3 class="works__title">
+                          ポートフォリオ<small>（当サイト）</small>
+                        </h3>
+                        <ul class="works__lang">
+                          <li>HTML / CSS</li>
+                          <li>jQuery</li>
+                        </ul>
+                        <div class="works__text">
+                          デザインからコーディングまで行いました。
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                  <li class="works__list-item">
+                    <a href="#works__modal02" class="js-modal-open">
+                      <div class="works__img">
+                        <img src="./images/works_img02.png" alt="" />
+                      </div>
+                      <div class="works__box">
+                        <h3 class="works__title">
+                          音楽イベントサイト<small>（模倣サイト）</small>
+                        </h3>
+                        <ul class="works__lang">
+                          <li>HTML / CSS</li>
+                          <li>jQuery</li>
+                        </ul>
+                        <div class="works__text">
+                          実際のサイトをもとにトップページのコーディングを行いました。
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                  <li class="works__list-item">
+                    <a href="#works__modal03" class="js-modal-open">
+                      <div class="works__img">
+                        <img src="./images/work.webp" alt="" />
+                      </div>
+                      <div class="works__box">
+                        <h3 class="works__title">
+                          サイトタイトル<small>（架空サイト）</small>
+                        </h3>
+                        <ul class="works__lang">
+                          <li>Vue.js</li>
+                        </ul>
+                        <div class="works__text">
+                          テキストテキストテキストテキストテキストテキストテキストテキストテキスト
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
+          <!-- works end -->
+          <!-- skills -->
+          <section class="skills" id="skills">
+            <div class="inner">
+              <h2 class="section-title">skills</h2>
+              <div class="section-container">
+                <div class="skills__group">
+                  <div class="skills__group-icon">
+                    <img src="./images/code_white_24dp.svg" alt="" />
+                  </div>
+                  <h3 class="skills__group-title">HTML5/CSS3</h3>
+                  <div class="skills__inner">
+                    レスポンシブやSassを含め、Webサイトを一から構築するためのコーディングが可能です。<br />
+                    使用エディタはVisualStudioCodeです。
+                  </div>
+                </div>
+                <div class="skills__group">
+                  <div class="skills__group-icon">
+                    <img src="./images/data_object_white_24dp.svg" alt="" />
+                  </div>
+                  <h3 class="skills__group-title">JavaScript / jQuery</h3>
+                  <div class="skills__inner">
+                    Webサイトに簡単な動きをつけるための基本的なコードを書くことが可能です。<br />
+                    サンプルコードをもとに少し複雑な動きを実装することもできます。
+                  </div>
+                </div>
+                <div class="skills__group">
+                  <div class="skills__group-icon">
+                    <img src="./images/view_in_ar_white_24dp.svg" alt="" />
+                  </div>
+                  <h3 class="skills__group-title">Vue.js</h3>
+                  <div class="skills__inner">
+                    基本的な機能を使用し、簡単なWebアプリを作成することが可能です。
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- skills end -->
+          <!-- about -->
+          <section class="about" id="about">
+            <div class="inner">
+              <h2 class="section-title">about</h2>
+              <div class="section-container">
+                <div class="about__head">
+                  <img class="about__img" src="./images/about.png" alt="" />
+                  <h3 class="about__name">うちだ すずか</h3>
+                  <div class="about__text">
+                    趣味は野球観戦とライブにいくこと
+                  </div>
+                </div>
+                <div class="about__intro">
+                  <p>1997年、鹿児島県で生まれる。</p>
+                  <p>
+                    進学を機に上京し、メディアと服飾流行の関係について学ぶ。
+                  </p>
+                  <p>
+                    大学卒業後、ソフトウェア開発会社に入社。初めてプログラミングに触れる。
+                  </p>
+                  <p>
+                    かねてより興味のあったWeb制作に携わることを目標に学習を開始。
+                  </p>
+                  <p>現在、フロントエンドエンジニアを目指して邁進中。</p>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- about end -->
+          <!-- contact -->
+          <section class="contact" id="contact">
+            <div class="inner">
+              <h2 class="section-title">contact</h2>
+              <div class="section-container">
+                <p class="contact__message">
+                  ご覧いただきありがとうございました！ <br />ご連絡はこちらまで
+                </p>
+                <div class="contact__address">
+                  <h3>uchida_su@cri-me.com</h3>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- contact end -->
+
+          <!-- modaal -->
+          <div id="works__modal01">
+            <div class="modaal-img">
+              <img src="./images/modal_img01.png" alt="" />
+            </div>
+            <h3 class="modaal-title">ポートフォリオサイト</h3>
+            <div class="modaal-contents">
+              <dl class="modaal-list">
+                <dt class="modaal-list-head">担当部分</dt>
+                <dd class="modaal-list-body">デザイン／コーディング</dd>
+                <dt class="modaal-list-head">制作期間</dt>
+                <dd class="modaal-list-body">30時間</dd>
+                <dt class="modaal-list-head">コメント</dt>
+                <dd class="modaal-list-body">
+                  シンプルかつアピールしたいことが伝わりやすいサイトを目指し作成しました。
+                </dd>
+              </dl>
+            </div>
+          </div>
+          <div id="works__modal02">
+            <div class="modaal-img">
+              <img src="./images/modal_img02.png" alt="" />
+            </div>
+            <h3 class="modaal-title">音楽イベントサイト</h3>
+            <div class="modaal-contents">
+              <dl class="modaal-list">
+                <dt class="modaal-list-head">担当部分</dt>
+                <dd class="modaal-list-body">コーディング</dd>
+                <dt class="modaal-list-head">制作期間</dt>
+                <dd class="modaal-list-body">70時間</dd>
+                <dt class="modaal-list-head">コメント</dt>
+                <dd class="modaal-list-body">
+                  アニメーションが多くJavaScriptの実装に時間を要しましたが、
+                  調べた情報を組み合わせ、見本と同様の動きを再現することができました。<br />
+                  <br />
+                  模倣元サイトURL:<br />https://fukuokamusic-fes.com/2023/index.html
+                </dd>
+              </dl>
+            </div>
+          </div>
+          <!-- <div id="works__modal03">
+            <div class="modaal-img">
+              <img src="./images/modal_img03.png" alt="" />
+            </div>
+            <h3 class="modaal-title">サイトタイトル</h3>
+            <div class="modaal-contents">
+              <dl class="modaal-list">
+                <dt class="modaal-list-head">担当部分</dt>
+                <dd class="modaal-list-body">デザイン／コーディング</dd>
+                <dt class="modaal-list-head">制作期間</dt>
+                <dd class="modaal-list-body">X時間</dd>
+                <dt class="modaal-list-head">コメント</dt>
+                <dd class="modaal-list-body">
+                  テキストテキストテキストテキストテキストテキストテキストテキストテキスト
+                </dd>
+              </dl>
+            </div>
+          </div> -->
+          <!-- modaal end -->
+        </div>
+      </main>
+
+      <!-- footer -->
+      <footer class="footer">
+        <div class="footer__inner">
+          <p class="js-pageTop">
+            <a href="#"
+              ><img src="./images/expand_less_white_24dp.svg" alt=""
+            /></a>
+          </p>
+          <p class="footer__copyright">© 2023 suzuka uchida</p>
+        </div>
+      </footer>
+      <!-- footer end -->
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/js/modaal.min.js"></script>
+    <script src="./main.js"></script>
+  </body>
+</html>
