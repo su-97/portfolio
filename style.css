@@ -1,0 +1,805 @@
+@charset "UTF-8";
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+body {
+  line-height: 1;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+nav ul {
+  list-style: none;
+}
+
+li {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+a {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+/* change colours to suit your needs */
+ins {
+  background-color: #ff9;
+  color: #000;
+  text-decoration: none;
+}
+
+/* change colours to suit your needs */
+mark {
+  background-color: #ff9;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+  border-bottom: 1px dotted;
+  cursor: help;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* change border colour to suit your needs */
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #cccccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+input, select {
+  vertical-align: middle;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/*===================================
+ color
+===================================*/
+/*===================================
+　ブレイクポイント
+===================================*/
+/* $breakpointsがココより以前に設定されている場合は上書きしないという設定 */
+/* @mixin mixin名(引数) -> @include mixin名(***)　という形でどこでも使えるようになる */
+html {
+  font-size: 3.125vw;
+  /*
+    計算式：　10(px) / 320(px) * 100 = 3.125
+    画面幅320pxの時に "font-size: 10px" 相当になる
+  */
+}
+
+body {
+  font-size: 0.375rem;
+  font-family: "Montserrat", "Noto Sans JP", sans-serif;
+  background-color: #f5efeb;
+  color: #567c8d;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+li {
+  list-style: none;
+}
+
+img {
+  width: 100%;
+}
+
+h1 {
+  font-size: 1rem;
+}
+
+h2 {
+  font-size: 0.8rem;
+}
+
+h3 {
+  font-size: 0.48rem;
+}
+
+small {
+  font-size: 0.2rem;
+}
+
+.section-title {
+  text-align: center;
+}
+.section-container {
+  width: 100%;
+  text-align: center;
+  margin-top: 1.8rem;
+}
+
+.inner {
+  width: 80%;
+  margin: 0 auto 5rem auto;
+}
+
+/*===================================
+　レスポンシブ
+===================================*/
+/* $引数名:初期値 */
+/* 引数の幅の数値 */
+/* map-get() -> $breakpointsから値の数値を取得。例ではlgなので`1024`が`$w1`に入る */
+/* 出力する文字列の設定 */
+/* 内容によって書き出す内容を条件分岐する */
+/* もし第一引数が`max`だったら */
+@media screen and (max-width: 768px) {
+  /* @include mixin名(***){} 最大769pxまで */
+  html {
+    font-size: 6.25vw;
+  }
+  .inner {
+    width: 88%;
+  }
+}
+/* $引数名:初期値 */
+/* 引数の幅の数値 */
+/* map-get() -> $breakpointsから値の数値を取得。例ではlgなので`1024`が`$w1`に入る */
+/* 出力する文字列の設定 */
+/* 内容によって書き出す内容を条件分岐する */
+/* もし第一引数が`min-max`だったら */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  /* 最小770px以上、最大1,230pxまで */
+}
+/* $引数名:初期値 */
+/* 引数の幅の数値 */
+/* map-get() -> $breakpointsから値の数値を取得。例ではlgなので`1024`が`$w1`に入る */
+/* 出力する文字列の設定 */
+/* 内容によって書き出す内容を条件分岐する */
+/* もし第一引数が`min`だったら */
+@media screen and (min-width: 1025px) {
+  /* 最小1,231px以上 */
+  /* @includeしたとき、他のブロックと同様に中括弧を使用して渡されます */
+}
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 0 0.8rem;
+  background-color: rgba(245, 239, 235, 0.8); /* 背景のみ半透明 */
+  z-index: 999;
+  /*===================================
+  　ハンバーガーボタン
+   　===================================*/
+}
+.header__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 2rem;
+}
+.header__logo {
+  width: 5rem;
+  margin-top: 3px;
+}
+.header__navi {
+  display: flex;
+}
+.header__navi-list--pc {
+  display: flex;
+}
+.header__navi-list--sp {
+  display: none;
+}
+.header__navi-item--pc {
+  margin-left: 1rem;
+  font-size: 0.48rem;
+  color: #2f4156;
+}
+.header__navi-item--sp a {
+  display: block;
+  color: #f5efeb;
+  padding: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  letter-spacing: 0.1rem;
+}
+.header__openbtn {
+  display: none;
+  position: relative;
+  z-index: 9999;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  /*activeクラスが付与されると線が回転*/
+}
+.header__openbtn span {
+  display: inline-block;
+  position: absolute;
+  right: 1rem;
+  width: 1.2rem;
+  height: 0.08rem;
+  border-radius: 2px;
+  background-color: #2f4156;
+  z-index: 9999;
+  transition: all 0.4s;
+}
+.header__openbtn span:nth-of-type(1) {
+  top: 0.8rem;
+}
+.header__openbtn span:nth-of-type(2) {
+  top: 1.2rem;
+}
+.header__openbtn.active span {
+  width: 1rem;
+  background-color: #f5efeb;
+}
+.header__openbtn.active span:nth-of-type(1) {
+  transform: translateY(0.4rem) rotate(-45deg);
+}
+.header__openbtn.active span:nth-of-type(2) {
+  transform: rotate(45deg);
+}
+
+/*===================================
+　レスポンシブ
+===================================*/
+/* $引数名:初期値 */
+/* 引数の幅の数値 */
+/* map-get() -> $breakpointsから値の数値を取得。例ではlgなので`1024`が`$w1`に入る */
+/* 出力する文字列の設定 */
+/* 内容によって書き出す内容を条件分岐する */
+/* もし第一引数が`max`だったら */
+@media screen and (max-width: 768px) {
+  /* ナビゲーション */
+  .header__navi {
+    /*position:fixed;にし、z-indexの数値を大きくして前面へ*/
+    position: fixed;
+    z-index: 999;
+    /*ナビのスタート位置と形状*/
+    top: 0;
+    right: -120%;
+    width: 100%;
+    height: 100vh;
+    background: #567c8d;
+    transition: all 0.6s;
+  }
+  .header__navi.panelactive {
+    /*ナビゲーション表示*/
+    right: 0;
+  }
+  .header__navi-list--pc {
+    display: none;
+  }
+  .header__navi-list--sp {
+    display: block;
+    position: absolute;
+    z-index: 999;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .header__openbtn {
+    display: contents;
+  }
+}
+/* $引数名:初期値 */
+/* 引数の幅の数値 */
+/* map-get() -> $breakpointsから値の数値を取得。例ではlgなので`1024`が`$w1`に入る */
+/* 出力する文字列の設定 */
+/* 内容によって書き出す内容を条件分岐する */
+/* もし第一引数が`min-max`だったら */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  /* 最小770px以上、最大1,230pxまで */
+}
+/* $引数名:初期値 */
+/* 引数の幅の数値 */
+/* map-get() -> $breakpointsから値の数値を取得。例ではlgなので`1024`が`$w1`に入る */
+/* 出力する文字列の設定 */
+/* 内容によって書き出す内容を条件分岐する */
+/* もし第一引数が`min`だったら */
+@media screen and (min-width: 1025px) {
+  /* 最小1,231px以上 */
+  /* @includeしたとき、他のブロックと同様に中括弧を使用して渡されます */
+}
+/*===================================
+　ホバーで左から右に下線が伸びる
+===================================*/
+.header__navi-list--pc li a {
+  position: relative;
+}
+.header__navi-list--pc li a:hover {
+  color: #cbd9e6;
+}
+.header__navi-list--pc li a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  width: 80%;
+  height: 1.8px;
+  background: #cbd9e6;
+  transition: all 0.3s;
+  transform: scale(0, 1);
+  transform-origin: left top;
+}
+.header__navi-list--pc licurrent a::after,
+.header__navi-list--pc li a:hover::after {
+  transform: scale(1, 1); /*X方向にスケール拡大*/
+}
+
+.first-view {
+  width: 100%;
+  height: 100vh;
+  min-height: 400px;
+}
+.first-view .inner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.first-view__message {
+  letter-spacing: 1.8px;
+  font-weight: 400;
+}
+
+/*===================================
+　縦線が動いてスクロールを促す 
+===================================*/
+.scrolldown {
+  position: absolute;
+  left: 50%;
+  bottom: 10px;
+  height: 50px;
+}
+
+/*Scrollテキスト*/
+.scrolldown span {
+  position: absolute;
+  left: -0.5rem;
+  top: -50%;
+  color: #2f4156;
+  font-size: 0.4rem;
+  letter-spacing: 0.05em;
+}
+
+/* 線 */
+.scrolldown::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 1px;
+  height: 50px;
+  background: #2f4156;
+  animation: pathmove 1.7s ease-in-out infinite;
+  opacity: 0;
+}
+
+/*高さ・位置・透過が変化して線が上から下に動く*/
+@keyframes pathmove {
+  0% {
+    height: 0;
+    top: 0;
+    opacity: 0;
+  }
+  30% {
+    height: 30px;
+    opacity: 1;
+  }
+  100% {
+    height: 0;
+    top: 70px;
+    opacity: 0;
+  }
+}
+.works {
+  margin-top: 5rem;
+}
+.works__list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.works__list-item {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  width: calc(33% - 24px);
+  border-radius: 10px;
+  background-color: #ffffff;
+  transition: all 0.3s;
+}
+.works__list-item:hover {
+  box-shadow: 0 7px 10px rgba(0, 0, 0, 0.3);
+}
+.works__img {
+  overflow: hidden;
+  height: 4.4rem;
+}
+.works__box {
+  padding: 0.5rem;
+  text-align: left;
+}
+.works__lang {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  margin-top: 0.5rem;
+}
+.works__lang li {
+  display: inline-block;
+  margin-left: 0.1rem;
+  padding: 0.1rem 0.2rem;
+  border-radius: 12px;
+  color: #f5efeb;
+  background-color: #2f4156;
+  font-size: 0.2rem;
+}
+.works__lang li:first-child {
+  margin-left: 0;
+}
+.works__text {
+  margin-top: 0.24rem;
+  line-height: 0.6rem;
+  color: #567c8d;
+}
+
+/*===================================
+　レスポンシブ
+===================================*/
+/* $引数名:初期値 */
+/* 引数の幅の数値 */
+/* map-get() -> $breakpointsから値の数値を取得。例ではlgなので`1024`が`$w1`に入る */
+/* 出力する文字列の設定 */
+/* 内容によって書き出す内容を条件分岐する */
+/* もし第一引数が`max`だったら */
+@media screen and (max-width: 768px) {
+  /* @include mixin名(***){} 最大769pxまで */
+  .works__list-item {
+    width: calc(50% - 0.3rem);
+    margin-bottom: 0.5rem;
+  }
+  .works__lang {
+    display: none;
+  }
+  .works__img {
+    height: 4rem;
+  }
+}
+/* $引数名:初期値 */
+/* 引数の幅の数値 */
+/* map-get() -> $breakpointsから値の数値を取得。例ではlgなので`1024`が`$w1`に入る */
+/* 出力する文字列の設定 */
+/* 内容によって書き出す内容を条件分岐する */
+/* もし第一引数が`min-max`だったら */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  /* 最小770px以上、最大1,230pxまで */
+}
+/* $引数名:初期値 */
+/* 引数の幅の数値 */
+/* map-get() -> $breakpointsから値の数値を取得。例ではlgなので`1024`が`$w1`に入る */
+/* 出力する文字列の設定 */
+/* 内容によって書き出す内容を条件分岐する */
+/* もし第一引数が`min`だったら */
+@media screen and (min-width: 1025px) {
+  /* 最小1,231px以上 */
+  /* @includeしたとき、他のブロックと同様に中括弧を使用して渡されます */
+}
+/*===================================
+　モーダル
+===================================*/
+#works__modal01,
+#works__modal02 {
+  display: none;
+}
+
+.modaal {
+  /* modaal.min.css */
+}
+.modaal-container {
+  max-width: 600px;
+  background-color: #fffffe;
+  border-radius: 10px;
+}
+.modaal-content-container {
+  padding: 1rem 2rem;
+}
+.modaal-close:after, .modaal-close:before {
+  background: #fffffe;
+}
+.modaal-close:focus:after, .modaal-close:focus:before, .modaal-close:hover:after, .modaal-close:hover:before {
+  background: #2f4156;
+}
+.modaal-img {
+  max-width: 20rem;
+  margin: 0 auto;
+}
+.modaal-title {
+  margin-top: 0.8rem;
+  color: #567c8d;
+}
+.modaal-list {
+  font-size: 0.38rem;
+  color: #5f6c7b;
+}
+.modaal-list-head {
+  margin-top: 0.5rem;
+  font-weight: bold;
+}
+.modaal-list-body {
+  margin-top: 0.2rem;
+  line-height: 1.2;
+}
+
+.skills .section-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: stretch;
+  position: relative;
+  width: 100%;
+  padding: 0.8rem 0;
+  border-radius: 10px;
+  background-color: #ffffff;
+}
+.skills__group {
+  text-align: center;
+  width: calc(33% - 64px);
+}
+.skills__group-title {
+  margin-top: 0.8rem;
+}
+.skills__group-icon {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  margin-top: 0.4rem;
+  z-index: 1;
+}
+.skills__group-icon img {
+  width: 0.8rem;
+}
+.skills__group-icon::before {
+  position: absolute;
+  top: -0.28rem;
+  left: -0.3rem;
+  content: "";
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 50%;
+  background-color: #567c8d;
+  z-index: -1;
+}
+.skills__inner {
+  text-align: left;
+  margin-top: 0.8rem;
+  font-size: 0.375rem;
+  line-height: 1.5;
+  color: #567c8d;
+}
+
+/*===================================
+　レスポンシブ
+===================================*/
+/* $引数名:初期値 */
+/* 引数の幅の数値 */
+/* map-get() -> $breakpointsから値の数値を取得。例ではlgなので`1024`が`$w1`に入る */
+/* 出力する文字列の設定 */
+/* 内容によって書き出す内容を条件分岐する */
+/* もし第一引数が`max`だったら */
+@media screen and (max-width: 768px) {
+  /* @include mixin名(***){} 最大769pxまで */
+  .skills .section-container {
+    flex-direction: column;
+  }
+  .skills__group {
+    width: 68%;
+    margin: 1rem auto 0 auto;
+  }
+  .skills__group:first-child {
+    margin-top: 0;
+  }
+}
+/* $引数名:初期値 */
+/* 引数の幅の数値 */
+/* map-get() -> $breakpointsから値の数値を取得。例ではlgなので`1024`が`$w1`に入る */
+/* 出力する文字列の設定 */
+/* 内容によって書き出す内容を条件分岐する */
+/* もし第一引数が`min-max`だったら */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  /* 最小770px以上、最大1,230pxまで */
+}
+/* $引数名:初期値 */
+/* 引数の幅の数値 */
+/* map-get() -> $breakpointsから値の数値を取得。例ではlgなので`1024`が`$w1`に入る */
+/* 出力する文字列の設定 */
+/* 内容によって書き出す内容を条件分岐する */
+/* もし第一引数が`min`だったら */
+@media screen and (min-width: 1025px) {
+  /* 最小1,231px以上 */
+  /* @includeしたとき、他のブロックと同様に中括弧を使用して渡されます */
+}
+.about .section-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.about__head {
+  text-align: left;
+}
+.about__img {
+  width: 5.6rem;
+  border-radius: 10px;
+}
+.about__intro {
+  text-align: left;
+}
+.about__name {
+  margin-top: 0.4rem;
+}
+.about__text {
+  margin-top: 0.4rem;
+  color: #2f4156;
+}
+.about__intro {
+  line-height: 1.2rem;
+}
+
+/*===================================
+　レスポンシブ
+===================================*/
+/* $引数名:初期値 */
+/* 引数の幅の数値 */
+/* map-get() -> $breakpointsから値の数値を取得。例ではlgなので`1024`が`$w1`に入る */
+/* 出力する文字列の設定 */
+/* 内容によって書き出す内容を条件分岐する */
+/* もし第一引数が`max`だったら */
+@media screen and (max-width: 768px) {
+  /* @include mixin名(***){} 最大769pxまで */
+  .about .section-container {
+    flex-direction: column;
+  }
+  .about__intro {
+    margin-top: 1.6rem;
+  }
+}
+/* $引数名:初期値 */
+/* 引数の幅の数値 */
+/* map-get() -> $breakpointsから値の数値を取得。例ではlgなので`1024`が`$w1`に入る */
+/* 出力する文字列の設定 */
+/* 内容によって書き出す内容を条件分岐する */
+/* もし第一引数が`min-max`だったら */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  /* 最小770px以上、最大1,230pxまで */
+}
+/* $引数名:初期値 */
+/* 引数の幅の数値 */
+/* map-get() -> $breakpointsから値の数値を取得。例ではlgなので`1024`が`$w1`に入る */
+/* 出力する文字列の設定 */
+/* 内容によって書き出す内容を条件分岐する */
+/* もし第一引数が`min`だったら */
+@media screen and (min-width: 1025px) {
+  /* 最小1,231px以上 */
+  /* @includeしたとき、他のブロックと同様に中括弧を使用して渡されます */
+}
+.contact__message {
+  line-height: 0.8rem;
+}
+.contact__address {
+  margin-top: 0.8rem;
+  font-weight: bold;
+}
+
+.footer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 1rem;
+  background-color: #567c8d;
+  color: #f5efeb;
+}
+
+/*===================================
+　ページトップリンク
+===================================*/
+.js-pageTop {
+  position: fixed;
+  right: 10px;
+  z-index: 2;
+  opacity: 0; /*はじめは非表示*/
+  transform: translateY(100px);
+}
+.js-pageTop a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #2f4156;
+  border-radius: 50%;
+  width: 1.4rem;
+  height: 1.4rem;
+  text-align: center;
+  transition: all 0.3s;
+}
+.js-pageTop a:hover {
+  background: #cbd9e6;
+}
+
+/*　上に上がる動き　*/
+.js-pageTop.UpMove {
+  animation: UpAnime 0.6s forwards;
+}
+
+@keyframes UpAnime {
+  from {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/*　下に下がる動き　*/
+.js-pageTop.DownMove {
+  animation: DownAnime 0.6s forwards;
+}
+
+@keyframes DownAnime {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(100px);
+  }
+}
